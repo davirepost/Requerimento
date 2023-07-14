@@ -33,7 +33,6 @@ CREATE TABLE `coordenacao` (
   `curso` varchar(40) NOT NULL,
   `telefone` int(14) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `endereco` varchar(150) NOT NULL,
   `senha` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -42,8 +41,8 @@ CREATE TABLE `coordenacao` (
 --
 
 INSERT INTO `coordenacao` (`cod_siape`, `nome`, `curso`, `telefone`, `email`, `endereco`, `senha`) VALUES
-(9, 'jota', 'C.I Técnico em Informática', 451, 'juntosnomcpe@gmail.com', 'v', '1111'),
-(10, '', '1', 0, '', '', '');
+( '', '', '', '', ''),
+( '', '' '', '', '');
 
 --
 -- Índices para tabelas despejadas
