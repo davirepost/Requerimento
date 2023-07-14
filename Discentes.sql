@@ -34,9 +34,8 @@ CREATE TABLE `estudante` (
 --
 
 INSERT INTO `estudante` (`matricula`, `nome`, `curso`, `telefone`, `email`, `senha`) VALUES
-(9, 'jota', 'C.I Técnico em Informática', 451, 'juntosnomcpe@gmail.com', 'v', '1111'),
-(10, '', '1', 0, '', '', '');
-
+( '', '', '', '', ''),
+( '', '' '', '', '');
 --
 -- Índices para tabelas despejadas
 --
