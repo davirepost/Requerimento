@@ -1,21 +1,22 @@
 <?php
-include("conexao.php");
 
+include("conexao.php");
+extract($_POST);
 //Verificando se existe ou não.
-if (isset($_POST['siap']) || isset($_POST['senha'])){
+if (isset($botao)){
+
+    $siap = strval($siap);
+    $senha = strval($senha);
 
     //Verificando se o usuario digitou o seu identificador.
-    if(strlen($_POST['siap']) == 0){
+    if(strlen($siap) == 0){
         echo 'Digite o seu login';
-    }
-    //Verificando se o usuario digitou a sua senha. 
-    else if(strlen($_POST['senha']) == 0){
+    }else if(strlen($senha) == 0){
         echo 'Digite o sua senha';
     }else{
-
     //Evitar que o usuário mal intencionado acesse o meu banco de dados.
-        $siap = $mysqli -> real_escape_string($_POST['siap']);
-        $senha =  $mysqli -> real_escape_string($_POST['senha']);
+        $siap = $mysqli -> real_escape_string($siap);
+        $senha =  $mysqli -> real_escape_string($senha);
 
     //Verificar se o usuario fez o seu login.
         $sql_code = "SELECT * FROM cadastro WHERE siape = '$siap' AND senha = '$senha'";
@@ -54,7 +55,7 @@ if (isset($_POST['siap']) || isset($_POST['senha'])){
 <body>
     <H1>Efetue o seu login</H1>
      <!-- Introduzindo o metodo-->
-    <form action="" method="post">
+    <form action="" method="POST">
        
         <p>
         <label for="">Digite seu id(SIAP):</label> <br>
@@ -77,10 +78,10 @@ if (isset($_POST['siap']) || isset($_POST['senha'])){
     <?php
     extract($_POST);
     if (isset($cadastro)){
-        header("location: busca.php");
+        header("location: ../cadastro.php");
     }
     if (isset($altera_senha)){
-        header("location: ../alterar.php");
+        header("location: busca.php");
     }
     ?>
 </body>

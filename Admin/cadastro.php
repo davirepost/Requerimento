@@ -1,44 +1,45 @@
 <?php
     include('login/conexao.php');
+    extract($_POST);
 
-    if(isset($_POST['nome']) || isset($_POST['sobrenome']) || isset($_POST['siape']) || isset($_POST['email']) || isset($_POST['coordenacao']) || isset($_POST['usuario']) || isset($_POST['senha'])){
+    if(isset($nome) || isset($sobrenome) || isset($siape) || isset($email) || isset($coordenacao) || isset($usuario) || isset($senha)){
         
         //Verificando se o usuario digitou o seu nome. 
-        if(strlen($_POST['nome']) == 0){
+        if(strlen($nome) == 0){
             echo 'Digite o seu nome!';
         }
         //Verificando se o usuario digitou o seu sobrenome. 
-        else if(strlen($_POST['sobrenome']) == 0){
+        else if(strlen($sobrenome) == 0){
             echo 'Digite o seu sobrenome!';
         }
         //Verificando se o usuario digitou o seu siape. 
-        if(strlen($_POST['siape']) == 0){
+        if(strlen($siape) == 0){
             echo 'Digite o seu siape!';
         }
         //Verificando se o usuario digitou o seu email. 
-        else if(strlen($_POST['email']) == 0){
+        else if(strlen($email) == 0){
             echo 'Digite o seu e-mail!';
         }
         //Verificando se o usuario digitou a sua coordenação. 
-        if(strlen($_POST['coordenacao']) == 0){
+        if(strlen($coordenacao) == 0){
             echo 'Digite a sua coordenação!';
         }
         //Verificando se o usuario digitou o seu usuario. 
-        else if(strlen($_POST['usuario']) == 0){
+        else if(strlen($usuario) == 0){
             echo 'Digite o seu usuario!';
         }
         //Verificando se o usuario digitou a sua senha.
-        if(strlen($_POST['senha']) == 0){
+        if(strlen($senha) == 0){
             echo 'Digite a sua senha!';
         }else{
 
-            $nome = $mysqli -> real_escape_string($_POST['nome']);
-            $sobrenome =  $mysqli -> real_escape_string($_POST['sobrenome']);
-            $siape = $mysqli -> real_escape_string($_POST['siape']);
-            $email =  $mysqli -> real_escape_string($_POST['email']);
-            $coordenacao = $mysqli -> real_escape_string($_POST['coordenacao']);
-            $usuario =  $mysqli -> real_escape_string($_POST['usuario']);
-            $senha = $mysqli -> real_escape_string($_POST['senha']);
+            $nome = $mysqli -> real_escape_string($nome);
+            $sobrenome =  $mysqli -> real_escape_string($sobrenome);
+            $siape = $mysqli -> real_escape_string($siape);
+            $email =  $mysqli -> real_escape_string($email);
+            $coordenacao = $mysqli -> real_escape_string($coordenacao);
+            $usuario =  $mysqli -> real_escape_string($usuario);
+            $senha = $mysqli -> real_escape_string($senha);
 
             $sql_code = "INSERT INTO cadastro(nome, sobrenome, siape, email, coordenacao, usuario, senha)
             Values('$nome', '$sobrenome', '$siape', '$email', '$coordenacao' ,'$usuario', '$senha')";
