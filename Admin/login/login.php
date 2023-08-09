@@ -53,24 +53,23 @@ if (isset($botao)){
     <title>Login</title>
 </head>
 <body>
-    <H1>Efetue o seu login</H1>
      <!-- Introduzindo o metodo-->
     <form action="" method="POST">
        
         <p>
-        <label for="">Digite seu id(SIAP):</label> <br>
+        <label for="">Usuário:</label> <br>
         <input type="text" name="siap"><br>
         </p>
 
         <p>
-        <label for="">Digite a sua senha:</label><br>
+        <label for="">Senha:</label><br>
         <input type="password" name="senha"><br>
         </p>
 
         <p>
-        <input type="submit" name='botao' value='Fazer login'> <br>
+        <input type="submit" name='botao' value='Entrar'> <br>
+        <a href="busca.php" target> Esqueceu a senha? <br>
         <input type="submit" name='cadastro' value='Criar uma nova conta'> <br>
-        <input type="submit" name='altera_senha' value='Esqueceu a sua conta?'> <br>
         </p>
 
 
