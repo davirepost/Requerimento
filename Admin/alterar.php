@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alterar Senha</title>
 </head>
-<body>
+<body>  <!-- Guilherme -->
 <H1>Altere a sua senha!</H1>
     <form action="" method="post">
  
