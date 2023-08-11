@@ -1,4 +1,4 @@
-<?php
+<?php //Guilherme
 $hostname = "localhost";
 $bancodedados = "login";
 $usuario = "root";
