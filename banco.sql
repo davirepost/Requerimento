@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema login
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Schema login
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `login` DEFAULT CHARACTER SET utf8 ;
+USE `login` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`discente`
+-- Table `login`.`discente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`discente` (
+CREATE TABLE IF NOT EXISTS `login`.`discente` (
   `matricula` INT(15) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(20) NOT NULL,
@@ -30,9 +30,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`departamento`
+-- Table `login`.`departamento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`departamento` (
+CREATE TABLE IF NOT EXISTS `login`.`departamento` (
   `cod_siape` INT NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -43,48 +43,48 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`curso`
+-- Table `login`.`curso`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`curso` (
+CREATE TABLE IF NOT EXISTS `login`.`curso` (
   `idcurso` INT NOT NULL,
   `nome_curso` VARCHAR(50) NOT NULL,
   `departamento_cod_siape` INT NOT NULL,
   PRIMARY KEY (`idcurso`),
-  INDEX `fk_curso_departamento_idx` (`departamento_cod_siape` ASC) VISIBLE,
+  INDEX `fk_curso_departamento_idx` (`departamento_cod_siape` ASC),
   CONSTRAINT `fk_curso_departamento`
     FOREIGN KEY (`departamento_cod_siape`)
-    REFERENCES `mydb`.`departamento` (`cod_siape`)
+    REFERENCES `login `.`departamento` (`cod_siape`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`turma`
+-- Table `login`.`turma`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`turma` (
+CREATE TABLE IF NOT EXISTS `login`.`turma` (
   `idturma` INT NOT NULL,
   `nome_turma` VARCHAR(20) NOT NULL,
   `curso_idcurso` INT NOT NULL,
   PRIMARY KEY (`idturma`, `curso_idcurso`),
-  INDEX `fk_turma_curso1_idx` (`curso_idcurso` ASC) VISIBLE,
+  INDEX `fk_turma_curso1_idx` (`curso_idcurso` ASC),
   CONSTRAINT `fk_turma_curso1`
     FOREIGN KEY (`curso_idcurso`)
-    REFERENCES `mydb`.`curso` (`idcurso`)
+    REFERENCES `login`.`curso` (`idcurso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`requerimento`
+-- Table `login`.`requerimento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`requerimento` (
+CREATE TABLE IF NOT EXISTS `login`.`requerimento` (
   `idrequerimento` INT NOT NULL,
   `objeto` VARCHAR(200) NOT NULL,
   `data_inicial` DATE NOT NULL,
   `data_final` DATE NOT NULL,
-  `data/hora_regis` DATETIME(15) NOT NULL,
+  `data/hora_regis` DATETIME(6) NOT NULL,
   `obs` VARCHAR(200) NULL,
   `anexos` VARCHAR(255) NOT NULL,
   `status` VARCHAR(45) NOT NULL,
@@ -92,8 +92,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`requerimento` (
   `turma_idturma` INT NOT NULL,
   `turma_curso_idcurso` INT NOT NULL,
   PRIMARY KEY (`idrequerimento`, `discente_matricula`, `turma_idturma`, `turma_curso_idcurso`),
-  INDEX `fk_requerimento_discente1_idx` (`discente_matricula` ASC) VISIBLE,
-  INDEX `fk_requerimento_turma1_idx` (`turma_idturma` ASC, `turma_curso_idcurso` ASC) VISIBLE,
+  INDEX `fk_requerimento_discente1_idx` (`discente_matricula` ASC),
+  INDEX `fk_requerimento_turma1_idx` (`turma_idturma` ASC, `turma_curso_idcurso` ASC),
   CONSTRAINT `fk_requerimento_discente1`
     FOREIGN KEY (`discente_matricula`)
     REFERENCES `mydb`.`discente` (`matricula`)
@@ -101,23 +101,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`requerimento` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_requerimento_turma1`
     FOREIGN KEY (`turma_idturma` , `turma_curso_idcurso`)
-    REFERENCES `mydb`.`turma` (`idturma` , `curso_idcurso`)
+    REFERENCES `login`.`turma` (`idturma` , `curso_idcurso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`docente`
+-- Table `login`.`docente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`docente` (
+CREATE TABLE IF NOT EXISTS `login`.`docente` (
   `email` VARCHAR(100) NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `requerimento_idrequerimento` INT NOT NULL,
   PRIMARY KEY (`requerimento_idrequerimento`),
   CONSTRAINT `fk_docente_requerimento1`
     FOREIGN KEY (`requerimento_idrequerimento`)
-    REFERENCES `mydb`.`requerimento` (`idrequerimento`)
+    REFERENCES `login`.`requerimento` (`idrequerimento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
