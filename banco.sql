@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `login`.`requerimento` (
   INDEX `fk_requerimento_turma1_idx` (`turma_idturma` ASC, `turma_curso_idcurso` ASC),
   CONSTRAINT `fk_requerimento_discente1`
     FOREIGN KEY (`discente_matricula`)
-    REFERENCES `mydb`.`discente` (`matricula`)
+    REFERENCES `login`.`discente` (`matricula`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_requerimento_turma1`
