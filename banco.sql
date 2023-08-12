@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `login`.`curso` (
   INDEX `fk_curso_departamento_idx` (`departamento_cod_siape` ASC),
   CONSTRAINT `fk_curso_departamento`
     FOREIGN KEY (`departamento_cod_siape`)
-    REFERENCES `login `.`departamento` (`cod_siape`)
+    REFERENCES `departamento` (`cod_siape`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
