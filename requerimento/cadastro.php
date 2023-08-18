@@ -10,10 +10,13 @@
 
 <form  action ="cadastro.php" method="post"><br>
         Nome: <input type="text" name='nome'><br>
-        E-mail: <input type="text" name='email'><br>
-        Turma: <input type="text" name='turma'><br>
         Matrícula:<input type="int" name='mat'><br>
+        <!-- Retirar o Email -->
+        E-mail: <input type="text" name='email'><br>  <!-- Retirar - Concatenar de forma automatica com @ifba.edu.br e enviar um amail para validar a conta -->
+        Turma: <input type="text" name='turma'><br>
         Senha:<input type="text" name='senha'><br>
+        <!-- Aba para Confirmar senha -->
+        <!-- A senha digitada deve ser a mesma de senha -->
 
         <input type="submit" name='salvar' value='Salvar'>
     
