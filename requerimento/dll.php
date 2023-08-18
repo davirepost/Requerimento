@@ -1,4 +1,4 @@
-
+ <!-- Esse código é a função do banco de dados-->
 <?php
 Function banco($server, $user, $password, $db, $consulta)
 	{
