@@ -14,7 +14,7 @@ if (isset($botao)){
     if(strlen($siap) == 0){
         echo 'Digite o seu login';
     }else if(strlen($senha) == 0){
-        echo 'Digite o sua senha';
+        echo 'Digite sua senha';
     }else{
     //Evitar que o usuário mal intencionado acesse o meu banco de dados.
         $siap = $mysqli -> real_escape_string($siap);
