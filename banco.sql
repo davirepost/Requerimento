@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema login
+-- Schema projeto
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema login
+-- Schema projeto
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `login` DEFAULT CHARACTER SET utf8 ;
-USE `login` ;
+CREATE SCHEMA IF NOT EXISTS `projeto` DEFAULT CHARACTER SET utf8 ;
+USE `projeto` ;
 
 -- -----------------------------------------------------
--- Table `login`.`discente`
+-- Table `projeto`.`discente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`discente` (
+CREATE TABLE IF NOT EXISTS `projeto`.`discente` (
   `matricula` INT(15) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(20) NOT NULL,
@@ -31,9 +31,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `login`.`coodernacao`
+-- Table `projeto`.`coodernacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`coordenacao` (
+CREATE TABLE IF NOT EXISTS `projeto`.`coordenacao` (
   `cod_siape` INT NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
@@ -44,9 +44,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `login`.`curso`
+-- Table `projeto`.`curso`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`curso` (
+CREATE TABLE IF NOT EXISTS `projeto`.`curso` (
   `idcurso` INT NOT NULL,
   `nome_curso` VARCHAR(50) NOT NULL,
   `departamento_cod_siape` INT NOT NULL,
@@ -61,9 +61,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `login`.`turma`
+-- Table `projeto`.`turma`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`turma` (
+CREATE TABLE IF NOT EXISTS `projeto`.`turma` (
   `idturma` INT NOT NULL,
   `nome_turma` VARCHAR(20) NOT NULL,
   `curso_idcurso` INT NOT NULL,
@@ -71,16 +71,16 @@ CREATE TABLE IF NOT EXISTS `login`.`turma` (
   INDEX `fk_turma_curso1_idx` (`curso_idcurso` ASC),
   CONSTRAINT `fk_turma_curso1`
     FOREIGN KEY (`curso_idcurso`)
-    REFERENCES `login`.`curso` (`idcurso`)
+    REFERENCES `projeto`.`curso` (`idcurso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `login`.`requerimento`
+-- Table `projeto`.`requerimento`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`requerimento` (
+CREATE TABLE IF NOT EXISTS `projeto`.`requerimento` (
   `idrequerimento` INT NOT NULL,
   `objeto` VARCHAR(200) NOT NULL,
   `data_inicial` DATE NOT NULL,
@@ -102,23 +102,23 @@ CREATE TABLE IF NOT EXISTS `login`.`requerimento` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_requerimento_turma1`
     FOREIGN KEY (`turma_idturma` , `turma_curso_idcurso`)
-    REFERENCES `login`.`turma` (`idturma` , `curso_idcurso`)
+    REFERENCES `projeto`.`turma` (`idturma` , `curso_idcurso`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `login`.`docente`
+-- Table `projeto`.`docente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`docente` (
+CREATE TABLE IF NOT EXISTS `projeto`.`docente` (
   `email` VARCHAR(100) NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `requerimento_idrequerimento` INT NOT NULL,
   PRIMARY KEY (`requerimento_idrequerimento`),
   CONSTRAINT `fk_docente_requerimento1`
     FOREIGN KEY (`requerimento_idrequerimento`)
-    REFERENCES `login`.`requerimento` (`idrequerimento`)
+    REFERENCES `projeto`.`requerimento` (`idrequerimento`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
