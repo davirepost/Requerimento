@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `login`.`coordenacao` (
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
-  `departamento` VARCHAR(45) NOT NULL,
+  `coordenacao` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cod_siape`))
 ENGINE = InnoDB;
 
