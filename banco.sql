@@ -25,14 +25,15 @@ CREATE TABLE IF NOT EXISTS `login`.`discente` (
   `email` VARCHAR(100) NOT NULL,
   `senha` VARCHAR(20) NOT NULL,
   `nome_aluno` VARCHAR(100) NOT NULL,
+  `endereco` VARCHAR(150) NOT NULL,
   PRIMARY KEY (`matricula`))
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `login`.`departamento`
+-- Table `login`.`coodernacao`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `login`.`departamento` (
+CREATE TABLE IF NOT EXISTS `login`.`coordenacao` (
   `cod_siape` INT NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
