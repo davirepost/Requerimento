@@ -40,7 +40,7 @@
 
     <p>
         <label for="">Digite seu nome: </label> 
-        <input type="text" name="nome" value=<?php echo $nome;?>><br>
+        <input type="text" name="nome" value='<?php echo $nome;?>'><br>
     </p>
 
     <p>
