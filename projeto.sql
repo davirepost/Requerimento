@@ -18,7 +18,7 @@ CREATE SCHEMA IF NOT EXISTS `projeto` DEFAULT CHARACTER SET utf8 ;
 USE `projeto` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`discente`
+-- Table `projeto`.`discente`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `projeto`.`discente` (
   `matricula` BIGINT(15) NOT NULL,
@@ -26,8 +26,11 @@ CREATE TABLE IF NOT EXISTS `projeto`.`discente` (
   `senha` VARCHAR(20) NOT NULL,
   `nome_aluno` VARCHAR(100) NOT NULL,
   `endereco` VARCHAR(150) NOT NULL,
-  PRIMARY KEY (`matricula`))
-ENGINE = InnoDB;
+  `identificador` INT(6) NOT NULL,
+  PRIMARY KEY (`matricula`),
+  UNIQUE INDEX `identificador_UNIQUE` (`identificador` ASC)
+) ENGINE = InnoDB;
+
 
 
 -- -----------------------------------------------------
