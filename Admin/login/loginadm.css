@@ -1,0 +1,104 @@
+body {
+  background-image: url("https://i.imgur.com/92iNc1a.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Styling for the main container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 330px;
+  height: 490px;
+  background: linear-gradient(black, rgba(0, 0, 0, 0.5)); /* Reduce opacity of the container */
+  border-radius: 10px;
+  margin-top: 5px; /* Move the container higher */
+}
+
+/* Adjust margins for the elements inside the container */
+.elementos {
+  margin-top: -20px; /* Use pixels for margin adjustments */
+}
+
+/* Styling for the logo */
+.logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  margin-top: 20px; /* Use a fixed value for margin-top */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px; /* Adjust the distance between the buttons */
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* Adicione esta linha para centralizar verticalmente */
+  margin-top: 15px;
+}
+
+.button {
+  width: 150px;
+  padding: 10px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  border-radius: 0; /* Remova o border-radius anterior */
+  cursor: pointer;
+  margin-bottom: 15px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  color: white; /* Adicione essa linha para definir a cor do texto como branco */
+}
+
+/* Styles for input fields */
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+}
+
+/* Styles for buttons */
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styles for the "Esqueceu a senha?" link */
+a[href="busca.php"] {
+  text-decoration: none;
+  color: blue;
+}
+
+/* Estilizar campo de senha quando o ícone é clicado */
+input[type="password"]:focus + .show-password::before {
+  content: "Esconder";
+  color: red;
+}
