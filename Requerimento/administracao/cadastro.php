@@ -84,9 +84,9 @@
         <input type="password" name="senha2"><br>
     </p>
 
-    <a href="pagina_adm.php">Voltar a página anterior</a> <br>
     <input type="submit" name='cadastro' value='Efetuar cadastro'> <br>
-    
+    <a href="pagina_adm.php">Voltar a página anterior</a> <br>
+
     </form>
     </body>
     </html>

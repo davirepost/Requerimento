@@ -11,8 +11,8 @@
             $senha = password_hash($senha, PASSWORD_DEFAULT); 
             $numero = 7;
             $identificador = bin2hex(random_bytes($numero));
-            $endereco = $end . ', ' . $bairro . ', ' . $cidade . ' - ' . $uf;
-            $consulta = "INSERT INTO discente(matricula, email, senha, nome_aluno, endereco, identificador) VALUES ('$mat','$email','$senha','$nome','$endereco', '$identificador')";
+            $endereco = $end . ', ' . $bairro . ', ' . $cidade . ' - ' . $uf;s
+            $consulta = "INSERT INTO discente(matricula, email, senha, nome_aluno, endereco, curso, identificador) VALUES ('$mat','$email','$senha','$nome','$endereco', '$curso', '$identificador')";
             banco($server, $user, $password, $db, $consulta);
             header ('Location:../login/index.php');
             exit;
@@ -63,21 +63,43 @@
 </head>
 <body>
 
-        <form action ="" method="post"><br>
-     
-        Nome: <input type="text" name='nome'><br>
-        Matrícula:<input type="int" name='mat'><br>
-        CEP: <input type="text" name="cep" id="cep" onchange="buscarEndereco()"> <br>
-        Endereço: <input type="text" name="end" id="end"><br>
-        Bairro: <input type="text" name="bairro" id="bairro"><br>
-        Cidade: <input type="text" name="cidade" id="cidade"><br>
-        UF: <input type="text" name="uf" id="uf"><br>
-        Senha:<input type="text" name='senha'><br>
-        Confirme sua senha:<input type="text" name='senha2'><br>
+        <form action ="" method="post">
         
-        
+            <label> Nome: </label> <br>
+            <input type="text" name='nome'><br>
 
-        <input type="submit" name='salvar' value='Salvar Cadastro'>
+            <label> Matrícula: </label> <br>
+            <input type="int" name='mat'><br>
+
+            <label> CEP: </label> <br>
+            <input type="text" name="cep" id="cep" onchange="buscarEndereco()"> <br>
+
+            <label>Endereço: </label> <br>
+            <input type="text" name="end" id="end"> <br>
+
+            <label>Bairro:</label> <br>
+            <input type="text" name="bairro" id="bairro"> <br>
+
+            <label>Cidade:</label> <br>
+            <input type="text" name="cidade" id="cidade"> <br>
+
+            <label> UF: </label> <br>
+            <input type="text" name="uf" id="uf"> <br>
+
+            <label> Senha: </label> <br>
+            <input type="text" name='senha'> <br>
+
+            <label> Confirme sua senha: </label> <br>
+            <input type="text" name='senha2'> <br>
+
+            <label for=""> Escolha o seu curso:</label><br>
+            <select name="curso">
+            <option value="Informática"> Informática </option>
+            <option value="Meio Ambiente"> Meio Ambiente </option>
+            <option value="Edificações"> Edificações </option>
+            </select> <br> <br>
+
+        <input type="submit" name='salvar' value='Salvar Cadastro'> <br>
         <a href="../login/index.php"> Voltar a página de login</a>
 
         </form> 

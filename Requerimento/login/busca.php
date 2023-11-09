@@ -13,13 +13,13 @@ if (!empty($buscar)) {
         echo "Email enviado para: " . $resultado['email'];
         
         // Obtenha o identificador da consulta anterior
-        $identificador = $resultado['id'];
+        $identificador = $resultado['identificador'];
 
         $to      = "$pesquisar";
         $subject = "Testando verificação em duas etapas";
         $message = "Olá, segue o link para alterar a senha: ";
         $message .= "http://localhost/admin/login/alterar.php?";
-        $message .= "id=$identificador"; 
+        $message .= "identificador=$identificador"; 
         $headers = "From: webmaster@example.com" . "\r\n" .
         "Reply-To: webmaster@example.com";
 
