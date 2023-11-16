@@ -1,35 +1,39 @@
-<?php 
-
+<?php
     include('../login/conexao.php');
-    extract($_POST); 
+    extract($_POST);
 
-    if (isset($salvar)){
-
-        if(strlen($mat) == 12 && $senha == $senha2 && $senha != null && $senha2 != null){
-            $email= $mat;
-            $email.= "@ifba.edu.br";
-            $senha = password_hash($senha, PASSWORD_DEFAULT); 
-            $numero = 7;
+    if (isset($salvar)) {
+        if (strlen((string)$mat) == 12) {
+            $consulta = "SELECT * FROM discente WHERE matricula = '$mat'";
+            $resultado = banco($server, $user, $password, $db, $consulta);
+            if (mysqli_num_rows($resultado) > 0) {
+                echo "Já existe alguém cadastrado com esses dados!";
+            }
+                
+            }else{
+            $email = strval($mat) . "@ifba.edu.br";
+            $numero = 3;
             $identificador = bin2hex(random_bytes($numero));
-            $endereco = $end . ', ' . $bairro . ', ' . $cidade . ' - ' . $uf;s
-            $consulta = "INSERT INTO discente(matricula, email, senha, nome_aluno, endereco, curso, identificador) VALUES ('$mat','$email','$senha','$nome','$endereco', '$curso', '$identificador')";
-            banco($server, $user, $password, $db, $consulta);
-            header ('Location:../login/index.php');
-            exit;
-        }else{
-            echo 'Erro ao cadastrar';
+            $endereco = $end . ', ' . $bairro . ', ' . $cidade . ' - ' . $uf;
+
+            $para = $email;
+            $assunto = "Verifique seu Email";
+            $mensagem = "Seu código de verificação é: $identificador";
+            $headers = "De: seu-email@example.com";
+
+            if (mail($para, $assunto, $mensagem, $headers)) {
+                $consulta = "INSERT INTO discente(matricula, email, nome_aluno, endereco, curso, identificador) VALUES ('$mat','$email','$nome','$endereco', '$curso', '$identificador')";
+                banco($server, $user, $password, $db, $consulta);
+                $matricula = $mat; 
+                header('Location: verificar.php/?&matricula=' . $matricula);
+                exit;
+            }
         }   
-        if(strlen($mat) > 12){
-            echo 'Matricula invalida.';
+        } else {
+            echo 'Matrícula inválida.';
         }
 
-        if ($senha!=$senha2){
-
-            echo 'As senhas estão diferentes. Digite novamente!';
-        }
-
-    }
-
+    
 ?>
 
 <!DOCTYPE html>
@@ -58,6 +62,7 @@
                 })
                 .catch(error => console.error('Erro:', error));
         }
+
     </script>
 
 </head>
@@ -69,7 +74,7 @@
             <input type="text" name='nome'><br>
 
             <label> Matrícula: </label> <br>
-            <input type="int" name='mat'><br>
+            <input type="text" name='mat'><br>
 
             <label> CEP: </label> <br>
             <input type="text" name="cep" id="cep" onchange="buscarEndereco()"> <br>
@@ -86,12 +91,6 @@
             <label> UF: </label> <br>
             <input type="text" name="uf" id="uf"> <br>
 
-            <label> Senha: </label> <br>
-            <input type="text" name='senha'> <br>
-
-            <label> Confirme sua senha: </label> <br>
-            <input type="text" name='senha2'> <br>
-
             <label for=""> Escolha o seu curso:</label><br>
             <select name="curso">
             <option value="Informática"> Informática </option>
@@ -99,8 +98,9 @@
             <option value="Edificações"> Edificações </option>
             </select> <br> <br>
 
-        <input type="submit" name='salvar' value='Salvar Cadastro'> <br>
-        <a href="../login/index.php"> Voltar a página de login</a>
+            <input type="submit" name='salvar' value='Salvar Cadastro'> <br>
+            
+            <a href="../login/index.php"> Voltar a página de login</a>
 
         </form> 
 

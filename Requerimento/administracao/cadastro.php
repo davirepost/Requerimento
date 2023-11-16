@@ -32,6 +32,7 @@
                                     VALUES('$nome', '$siape', '$email', '$coordenacao', '$senha', '$identificador')";
                         banco($server, $user, $password, $db, $sql_code);
                         header('location: cadastro.php');
+                        echo "Cadastro realizado com sucesso!";
                         exit; 
                     }else{
                         echo "Codigo siape indefinido(numero excedeu o seu limite ou não foi encontrado)!";
@@ -40,6 +41,9 @@
                 echo "Opa! Suas senhas não coincidem, tente novamente.";
             }
             
+        }
+        if(isset($voltar)){
+            header("Location: pagina_adm.php"); 
         }
 ?>
 <!DOCTYPE html>
@@ -85,7 +89,7 @@
     </p>
 
     <input type="submit" name='cadastro' value='Efetuar cadastro'> <br>
-    <a href="pagina_adm.php">Voltar a página anterior</a> <br>
+    <input type="submit" name='voltar' value='Voltar a página anterior'> <br>
 
     </form>
     </body>
