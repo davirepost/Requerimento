@@ -1,79 +1,79 @@
 <?php 
-        include "conexao.php";
-        extract($_POST); 
-        if (isset($entrar)){
+    include("conexao.php");
+    extract($_POST); 
+    if (isset($entrar)){
 
-            if(strlen($acesso) == 11){
+        if(strlen($acesso) == 11){
 
-                $consulta = "SELECT * FROM adm WHERE cod_adm = $acesso AND senha = '$senha'";
-                    $resultado = banco($server, $user, $password, $db, $consulta); 
+            $consulta = "SELECT * FROM adm WHERE cod_adm = $acesso AND senha = '$senha'";
+            $resultado = banco($server, $user, $password, $db, $consulta); 
                 
-                    $quantidade = $resultado -> num_rows;
+            $quantidade = $resultado->num_rows;
                 
-                    if($quantidade == 1){
+            if($quantidade == 1){
                 
-                        $projeto = $resultado -> fetch_assoc();
+                $projeto = $resultado->fetch_assoc();
                             
-                        if(!isset($_SESSION)){
-                            session_start();
-                        }
+                if(!isset($_SESSION)){
+                    session_start();
+                }
 
-                        $_SESSION['id'] = $projeto['id'];
+                $_SESSION['id'] = $projeto['id'];
 
-                        header ('Location: ../administracao/pagina_adm.php');
-                        exit;
+                header ('Location: ../administracao/pagina_adm.php');
+                exit;
                             
-                    }
-            }if(strlen($acesso) == 12){
+            }
+        } elseif(strlen($acesso) == 12){
 
-                    $consulta = "SELECT * FROM discente  WHERE  matricula = $acesso AND senha = '$senha'";
-                    $resultado = banco($server, $user, $password, $db, $consulta); 
+            $consulta = "SELECT * FROM discente  WHERE  matricula = $acesso AND senha = '$senha'";
+            $resultado = banco($server, $user, $password, $db, $consulta); 
                 
-                    $quantidade = $resultado -> num_rows;
+            $quantidade = $resultado->num_rows;
                 
-                    if($quantidade == 1){
+            if($quantidade == 1){
                 
-                        $projeto = $resultado -> fetch_assoc();
+                $projeto = $resultado->fetch_assoc();   
                             
-                        if(!isset($_SESSION)){
-                            session_start();
-                        }
+                if(!isset($_SESSION)){
+                    session_start();
+                }
 
-                        $_SESSION['id'] = $projeto['id'];
-                        $_SESSION['nome'] = $projeto['nome'];
+                $_SESSION['id'] = $projeto['id'];
+                $_SESSION['nome'] = $projeto['nome'];
 
-                        header ('Location: ../discente/index.php');
-                        exit;
+                header ('Location: ../discente/pagina_inicial.php/?&id=' . $_SESSION['id'] );
+                exit;
                             
-                    }
-            }if(strlen($acesso) == 7){
+            }
+        } elseif(strlen($acesso) == 7){
 
-                    $consulta = "SELECT * FROM coordenacao WHERE cod_siape = $acesso AND senha = '$senha'";
-                    $resultado = banco($server, $user, $password, $db, $consulta); 
+            $consulta = "SELECT * FROM coordenacao WHERE cod_siape = $acesso AND senha = '$senha'";
+            $resultado = banco($server, $user, $password, $db, $consulta); 
                 
-                    $quantidade = $resultado -> num_rows;
+            $quantidade = $resultado->num_rows;
                 
-                    if($quantidade == 1){
+            if($quantidade == 1){
                 
-                        $projeto = $resultado -> fetch_assoc();
+                $projeto = $resultado->fetch_assoc();
                             
-                        if(!isset($_SESSION)){
-                            session_start();
-                        }
+                if(!isset($_SESSION)){
+                    session_start();
+                }
 
-                        $_SESSION['id'] = $projeto['id'];
-                        $_SESSION['nome'] = $projeto['nome'];
+                $_SESSION['id'] = $projeto['id'];
+                $_SESSION['nome'] = $projeto['nome'];
 
-                        header ('Location: index.php');
-                        exit;
+                header ('Location: index.php');
+                exit;
                             
-                    }
-            }else{
-                echo "Falha ao logar! Não existe alguém cadastrado com esses dados";
-            }    
-        }        
-            
+            }
+        } else {
+            echo "Falha ao logar! Não existe alguém cadastrado com esses dados";
+        }    
+    }        
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
