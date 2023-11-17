@@ -37,7 +37,7 @@
 
         $status = 'Em Verificação';
 
-        $consulta = "INSERT INTO requerimento(objeto, data_inicial, `data/hora_regis`, obs, anexos, status, turma, discente_matricula, idcurso, campus, email) VALUES ('$objeto','$data_inicial','$data_registro','$obs','$nome_arquivo','$status','$turma','$matricula','$curso','$campus','$email')";
+        $consulta = "INSERT INTO requerimento(objeto, data_inicial, `data/hora_regis`, obs, anexos, status, turma, discente_matricula, idcurso, email) VALUES ('$objeto','$data_inicial','$data_registro','$obs','$nome_arquivo','$status','$turma','$matricula','$curso','$campus','$email')";
 
         banco($server, $user, $password, $db, $consulta);
         header('location: index.php');
@@ -55,49 +55,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documento</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            width: 210mm;
-            height: 297mm;
-            margin: 0 auto;
-            padding: 20mm;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-        }
-
-        input[type="text"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 5px;
-            margin-bottom: 10px;
-        }
-
-        #docentes-container {
-            margin-top: 10px;
-        }
-
-        #docentes-container input {
-            width: 50%;
-            display: inline-block;
-        }
-
-        button {
-            margin-top: 10px;
-        }
-
-        select {
-            width: 100%;
-        }
-
-        textarea {
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <form action="" method="post" enctype="multipart/form-data">
@@ -117,7 +75,7 @@
         <input type="text" name="email">
 
         <div id="docentes-container">
-            <label>Docentes envolvidos:</label>
+            <label>Docentes Envolvidos:</label>
             <input type="text" name="docentes[]">
         </div>
         <button type="button" onclick="adicionarCampo()">Adicionar Docente</button>
@@ -142,9 +100,6 @@
         <label>Matrícula:</label>
         <input type="text" name="matricula">
 
-        <label>Campus:</label>
-        <input type="text" name="campus">
-
         <label>Objetivo:</label>
         <select name="objeto">
             <option value="Justificativa de Falta"> Justificativa de Falta</option>
@@ -154,7 +109,7 @@
         <label>Observação:</label>
         <textarea name="obs" rows="5"></textarea>
         <input type= "file" name="file"/> 
-        <input type="submit" value="enviar" name='acao'>
+        <input type="submit" value="Enviar" name='acao'>
     </form>
 
     <script>
