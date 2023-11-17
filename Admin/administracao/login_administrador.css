@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 240mm;
+    height: 300mm;
+    margin: 0 auto;
+    padding: 20mm;
+    background-image: url("https://i.imgur.com/92iNc1a.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+form {
+    color: white; /* Deixa o nome usuário e senha em branco*/
+    background-color: rgba(28, 31, 29, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    color: white;
+}
+
+label[for="cod_adm"], label[for="senha"] {
+    color: white;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container input[type="password"] {
+    width: calc(100% - 30px);
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+.password-container .toggle-password-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    color: white;
+    cursor: pointer;
+}
+
+#container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#container input {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+button,
+input[type="file"],
+input[type="submit"] {
+    margin-top: 16px; 
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover,
+input[type="file"]:hover,
+input[type="submit"]:hover {
+    background-color: green;
+}
+
+select {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    margin-right: 10px; 
+}
+
+a:hover {
+    color: green;
+}
