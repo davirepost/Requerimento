@@ -67,11 +67,6 @@
         echo '<a href="visualizar.php?id=' . $id . '">Visualizar Dados</a>';
     }
 ?>
-
-
-</html>
-
-
     <!DOCTYPE html>
     <html lang="en">
     <head>

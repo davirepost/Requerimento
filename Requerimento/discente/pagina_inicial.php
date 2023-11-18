@@ -7,10 +7,10 @@
     if(isset($_FILES))
     
     if(isset($requerimento)){
-        header('location: index.php?&id=' . $_SESSION['id']);
+        header('location: ../index.php?&id=' . $_SESSION['id']);
     }
     if(isset($visualizar)){
-        header('location: visualizar.php?&id=' . $_SESSION['id']);
+        header('location: ../visualizar.php?&id=' . $_SESSION['id']);
         
     }
     if(isset($sair)){
