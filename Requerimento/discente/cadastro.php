@@ -43,7 +43,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="cadastrodis.css">
     <title>Cadastro</title>
-    <link rel="stylesheet" href="decoration.css">
     <script>
         function buscarEndereco() {
             var cep = document.getElementById('cep').value;
