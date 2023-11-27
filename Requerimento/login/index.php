@@ -47,25 +47,36 @@
                             
             }
         } elseif(strlen($acesso) == 7){
+            $cores = "Coordenação de Registro (CORES)";
+            $ed = "Coordenação de Curso de Edificações"; 
+            $ema = "Coordenação de Curso de Meio Ambiente";
+            $ei = "Coordenação de Curso de Informática";
 
-            $consulta = "SELECT * FROM coordenacao WHERE cod_siape = $acesso AND senha = '$senha'";
+            $consulta = "SELECT * FROM coordenacao WHERE cod_siape = '$acesso' AND senha = '$senha'";
             $resultado = banco($server, $user, $password, $db, $consulta); 
                 
             $quantidade = $resultado->num_rows;
                 
             if($quantidade == 1){
-                
+
                 $projeto = $resultado->fetch_assoc();
-                            
+                                
                 if(!isset($_SESSION)){
                     session_start();
                 }
 
                 $_SESSION['id'] = $projeto['id'];
                 $_SESSION['nome'] = $projeto['nome'];
+                $coordenacao = $projeto['coordenacao'];
 
-                header ('Location: index.php');
-                exit;
+                if($coordenacao == $cores){
+                    header ('Location: ../coordenacao/cores.php');
+                    exit;
+                }
+                if($coordenacao  == $ei){
+                    header ('Location: ../coordenacao/informatica.php');
+                    exit;
+                }
                             
             }
         } else {

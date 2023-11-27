@@ -1,0 +1,54 @@
+/* Define o estilo para o corpo do documento */
+body {
+    font-family: Arial, sans-serif; /* Define a fonte usada para o texto */
+    background-color: #f4f4f4; /* Define a cor de fundo */
+    margin: 0; /* Remove margens ao redor do corpo */
+    padding: 0; /* Remove preenchimento interno do corpo */
+    display: flex; /* Aplica um layout flexível */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+    height: 100vh; /* Define a altura do corpo como 100% da altura da viewport */
+}
+
+/* Define o estilo para um contêiner específico */
+.container {
+    text-align: center; /* Centraliza o texto no contêiner */
+}
+
+/* Define o estilo para imagens */
+.image {
+    max-width: 500px; /* Define a largura máxima para imagens */
+    margin-bottom: 20px; /* Adiciona margem inferior */
+}
+
+/* Define o estilo para títulos, mensagens e links com a classe 'gti-link' */
+h1, .message, .gti-link {
+    margin-bottom: 20px; /* Adiciona margem inferior */
+}
+
+/* Define o estilo para um contêiner de botões */
+.button-container {
+    display: flex; /* Aplica um layout flexível */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo */
+    align-items: center; /* Centraliza verticalmente o conteúdo */
+}
+
+/* Define o estilo para botões */
+.button {
+    display: inline-flex; /* Aplica um layout flexível dentro do botão */
+    align-items: center; /* Centraliza verticalmente o conteúdo do botão */
+    justify-content: center; /* Centraliza horizontalmente o conteúdo do botão */
+    padding: 10px 20px; /* Define o preenchimento interno do botão */
+    margin: 10px; /* Adiciona margem externa ao botão */
+    background-color: #007bff; /* Define a cor de fundo do botão */
+    color: white; /* Define a cor do texto do botão */
+    border: none; /* Remove a borda do botão */
+    border-radius: 5px; /* Define o raio das bordas do botão */
+    text-decoration: none; /* Remove decoração de texto (sublinhado) */
+    font-weight: bold; /* Define a espessura da fonte como negrito */
+}
+
+/* Define o estilo para ícones dentro dos botões */
+.button i {
+    margin-right: 5px; /* Adiciona margem à direita dos ícones */
+}

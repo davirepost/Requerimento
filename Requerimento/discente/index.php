@@ -52,25 +52,21 @@
         $data_registro = date('y/m/d G:i:s');
 
         $status = 'Em Verificação';
-        $consulta = "INSERT INTO requerimento( objeto, data_inicial, `data/hora_regis`, obs, anexos, status, turma, discente_matricula, idcurso, email) VALUES ('$objeto','$data_inicial','$data_registro','$obs','$nome_arquivo','$status','$turma','$matricula','$curso','$email')";
+
+        $consulta = "INSERT INTO requerimento(objeto, data_inicial, data_final, `data/hora_regis`, obs, anexos, `status`, turma, discente_matricula, idcurso, email, docente) VALUES ('$objeto','$data_inicial','$data_final','$data_registro','$obs','$nome_arquivo','$status','$turma','$matricula','$curso','$email', '$docentes')";
 
         banco($server, $user, $password, $db, $consulta);   
         echo '<script>';
         echo 'if(confirm("Deseja fazer um novo requerimento?")) {';
         echo '   window.location.href = window.location.href;';
         echo '} else {';
-        echo '   window.location.href = "../pagina_inicial.php";'; // Substitua pela página inicial desejada
+        echo '   window.location.href = "../discente/visualizar.php";'; // Substitua pela página inicial desejada
         echo '}';
         echo '</script>';
         echo 'confirmacao()';
-        
+        echo '<a href="visualizar.php?id=' . $id . '">Visualizar Dados</a>';
     }
 ?>
-
-
-</html>
-
-
     <!DOCTYPE html>
     <html lang="en">
     <head>
