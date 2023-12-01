@@ -1,12 +1,14 @@
 
 <?php
    include('../login/conexao.php');
-   include('../login/protecao.php'); 
+   include('../login/protecao.php');
+
    extract($_POST);
+   
     if (!empty($_GET['id'])){
 
         $id = $_GET['id'];
-
+    
         $consulta = "SELECT * FROM coordenacao WHERE id=$id";
         $resultado = banco($server, $user, $password, $db, $consulta);
         if($resultado -> num_rows > 0){

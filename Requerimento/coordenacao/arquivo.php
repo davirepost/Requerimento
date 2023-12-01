@@ -1,7 +1,7 @@
 <?php
     include("../login/protecao.php");
     include("../login/conexao.php");
-    
+    $ei = isset($_GET['ei']) ? $_GET['ei'] : null;
     extract($_POST);
     if (!empty($_GET['idrequerimento'])){
 
@@ -40,23 +40,23 @@
         }
     }
     if (isset($voltar)){
-        header('location: cores.php');
+        header("location: coordenador.php/?ei=$ei&ema=$ema&ed=$ed");
         exit;
     }
 
     if (isset($aprovado)){
-        $stat = 'Enviado para o coordenador';
+        $stat = 'Aprovado';
         $consulta = "UPDATE requerimento SET `status` = '$stat' WHERE idrequerimento = $id";
         $resultado = banco($server, $user, $password, $db, $consulta);
-        header('location: cores.php');
+        header("location: coordenador.php/?ei=$ei&ema=$ema&ed=$ed");
         exit;
     }
 
-    if (isset($recusado)){
-        $stat = 'Recusado';
+    if (isset($recebido)){
+        $stat = 'Recebido pelo coordenador';
         $consulta = "UPDATE requerimento SET `status` = '$stat' WHERE idrequerimento = $id";
         $resultado = banco($server, $user, $password, $db, $consulta);
-        header('location: cores.php');
+        header("location: coordenador.php/?ei=$ei&ema=$ema&ed=$ed");
         exit;
     }
 
@@ -114,7 +114,7 @@
     </head>
 <body>
     <form action="" method="post" enctype="multipart/form-data">
-        <div id="requerimento">
+
             <h1> Requerimento</h1>
             <label>Nome Completo:</label>
             <input type="text" name="nome" value='<?php echo $nome;?>' readonly>
@@ -166,12 +166,10 @@
             <textarea name="obs" rows="5" readonly><?php echo $obs;?></textarea>
 
             <?php echo "Anexo: <a href='visualizar_pdf.php?id=$id'>Arquivo PDF</a>";?>
-            </div>
-            <input type="submit" value="Imprimir" name='imprimir' id="btn_imp" >
+
             <input type="submit" value="Voltar" name='voltar'>
-            <script src="java.js"></script>
             <input type="submit" value="Aprovar" name='aprovado'>
-            <input type="submit" value="Recusar" name='recusado'>
+            <input type="submit" value="Recebido pelo coordenador" name='recebido'>
     </form>
 
 </body>

@@ -14,12 +14,12 @@
         }
     }
 
-    $consulta = "SELECT data_inicial, `status`, idrequerimento, objeto FROM requerimento WHERE discente_matricula = $matricula";
+    $consulta = "SELECT `data/hora_regis`, `status`, idrequerimento, objeto FROM requerimento WHERE discente_matricula = $matricula";
     $resultado = banco($server, $user, $password, $db, $consulta);
 
     while($user = mysqli_fetch_assoc($resultado)){
         echo '    <p>ID: ' . $user['idrequerimento'] . '</p>';
-        echo '    <p>Data Inicial: ' . $user['data_inicial'] . '</p>';
+        echo '    <p>Data Do Pedido: ' . $user['data/hora_regis'] . '</p>';
         echo '    <p>Status: ' . $user['status'] . '</p>';
         echo '    <p>Objetivo: ' . $user['objeto'] . '</p>';
 

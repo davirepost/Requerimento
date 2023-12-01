@@ -36,7 +36,6 @@
     <input type="submit" value="Fazer um novo requerimento" name="requerimento">
     <input type="submit" value="Visualizar requerimentos" name="visualizar">
     <input type="submit" value="Desconectar-se" name="sair">
-    <input type="file">
     </form>
 </body>
 </html>

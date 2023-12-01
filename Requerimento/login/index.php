@@ -51,10 +51,11 @@
             $ed = "Coordenação de Curso de Edificações"; 
             $ema = "Coordenação de Curso de Meio Ambiente";
             $ei = "Coordenação de Curso de Informática";
+            
 
-            $consulta = "SELECT * FROM coordenacao WHERE cod_siape = $acesso AND senha = '$senha'";
+            $consulta = "SELECT * FROM coordenacao WHERE cod_siape = '$acesso' AND senha = '$senha'";
             $resultado = banco($server, $user, $password, $db, $consulta); 
-                
+            
             $quantidade = $resultado->num_rows;
                 
             if($quantidade == 1){
@@ -64,15 +65,25 @@
                 if(!isset($_SESSION)){
                     session_start();
                 }
-
+                
                 $_SESSION['id'] = $projeto['id'];
                 $_SESSION['nome'] = $projeto['nome'];
+                $coordenacao = $projeto['coordenacao'];
 
-                $consulta = "SELECT coordenacao FROM coordenacao";
-                $resultado = banco($server, $user, $password, $db, $consulta);
-
-                if($resultado = $cores){
+                if($coordenacao == $cores){
                     header ('Location: ../coordenacao/cores.php');
+                    exit;
+                }
+                else if($coordenacao  == $ei){
+                    header ('Location: ../coordenacao/coordenador.php/?&ei=' . $ei);
+                    exit;
+                }
+                if($coordenacao  == $ed){
+                    header ('Location: ../coordenacao/coordenador.php/?&ed=' . $ed);
+                    exit;
+                }
+                else if($coordenacao  == $ema){
+                    header ('Location: ../coordenacao/coordenador.php/?&ema=' . $ema);
                     exit;
                 }
                             

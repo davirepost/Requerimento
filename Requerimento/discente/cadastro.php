@@ -28,10 +28,8 @@
                 header('Location: verificar.php/?&matricula=' . $matricula);
                 exit;
             }
-        }   
-        } else {
-            echo 'Matrícula inválida.';
         }
+    }
 
     
 ?>
