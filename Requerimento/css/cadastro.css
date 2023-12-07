@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 20mm;
+    background-image: url("https://i.imgur.com/92iNc1a.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    color: white;
+    background-color: rgba(28, 31, 29, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Estilizando campos de entrada e select */
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+}
+
+/* Estilizando botões e links */
+button,
+input[type="file"],
+input[type="submit"],
+a {
+    margin-top: 10px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: block;
+    margin: 0 auto; /* Centraliza os botões na horizontal */
+}
+
+button:hover,
+input[type="file"]:hover,
+input[type="submit"]:hover,
+a:hover {
+    background-color: green;
+}
+
+/* Estilizando o select de forma mais atraente */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: green; /* Cor de fundo verde para o select */
+    color: white;
+    appearance: none;
+    background-image: url('https://imageurl.com');
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+}
